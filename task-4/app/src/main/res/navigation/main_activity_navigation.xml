@@ -9,22 +9,43 @@
         android:id="@+id/mainFragment"
         android:name="com.ugurtansal.task_4.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/main_to_A_pass"
+            app:destination="@id/AFragment" />
+        <action
+            android:id="@+id/main_to_X_pass"
+            app:destination="@id/XFragment" />
+    </fragment>
     <fragment
         android:id="@+id/AFragment"
         android:name="com.ugurtansal.task_4.AFragment"
         android:label="fragment_a"
-        tools:layout="@layout/fragment_a" />
+        tools:layout="@layout/fragment_a" >
+        <action
+            android:id="@+id/A_to_B_pass"
+            app:destination="@id/BFragment" />
+    </fragment>
     <fragment
         android:id="@+id/BFragment"
         android:name="com.ugurtansal.task_4.BFragment"
         android:label="fragment_b"
-        tools:layout="@layout/fragment_b" />
+        tools:layout="@layout/fragment_b" >
+        <action
+            android:id="@+id/B_to_Y_pass"
+            app:destination="@id/YFragment"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/XFragment"
         android:name="com.ugurtansal.task_4.XFragment"
         android:label="fragment_x"
-        tools:layout="@layout/fragment_x" />
+        tools:layout="@layout/fragment_x" >
+        <action
+            android:id="@+id/X_to_Y_pass"
+            app:destination="@id/YFragment"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/YFragment"
         android:name="com.ugurtansal.task_4.YFragment"
