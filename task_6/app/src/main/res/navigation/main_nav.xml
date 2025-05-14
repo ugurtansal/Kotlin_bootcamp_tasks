@@ -8,6 +8,7 @@
     <fragment
         android:id="@+id/mainPageFragment"
         android:name="com.ugurtansal.task_6.ui.fragment.MainPageFragment"
-        android:label="fragment_main_page"
+        android:label="Home"
         tools:layout="@layout/fragment_main_page" />
+
 </navigation>
