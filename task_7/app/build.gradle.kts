@@ -56,14 +56,18 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.5.1")
+    implementation("androidx.activity:activity-ktx:1.6.1")
+
+    //For hilt
+    implementation("com.google.dagger:hilt-android:2.56.2")
+    kapt("com.google.dagger:hilt-android-compiler:2.56.2")
+
+    //Room
     implementation ("androidx.room:room-runtime:2.7.1")
     kapt("androidx.room:room-compiler:2.7.1")
     implementation("androidx.room:room-ktx:2.7.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.0")
-
-    implementation("com.google.dagger:hilt-android:2.56.2")
-    kapt("com.google.dagger:hilt-android-compiler:2.56.2")
-
 
 
 }

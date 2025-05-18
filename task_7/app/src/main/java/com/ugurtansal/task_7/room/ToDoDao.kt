@@ -25,6 +25,6 @@ interface ToDoDao {
     suspend fun deleteTask(task: ToDo)
 
 
-    @Query("SELECT * FROM Task WHERE task LIKE '%' || :searchedWord ||'%'")
+    @Query("SELECT * FROM Task WHERE name LIKE '%' || :searchedWord ||'%'")
     suspend fun search(searchedWord: String): List<ToDo>
 }
