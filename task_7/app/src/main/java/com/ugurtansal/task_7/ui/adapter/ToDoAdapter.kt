@@ -4,10 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.R
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.ugurtansal.task_7.data.entity.ToDo
 import com.ugurtansal.task_7.databinding.CardDesignBinding
+import com.ugurtansal.task_7.utils.pass
 
 class ToDoAdapter(var mContext: Context, var toDoList: List<ToDo>, )
     : RecyclerView.Adapter<ToDoAdapter.CardDesignHolder>()
@@ -28,6 +30,19 @@ class ToDoAdapter(var mContext: Context, var toDoList: List<ToDo>, )
         val t=holder.design
 
         t.toDoTask.text= todo.task
+
+        t.imageViewDelete.setOnClickListener {
+            Snackbar.make(it,"${todo.task} silinsin?", Snackbar.LENGTH_SHORT)
+                .setAction("Evet") {
+                    //viewModel.delete(person.kisi_id);
+                    // Snackbar.make(it,"${person.kisi_ad} silindi", Snackbar.LENGTH_SHORT).show()
+                }.show()
+        }
+
+        t.imageViewEdit.setOnClickListener {
+            val pass= MainFragmentDirections.mainToUpdate(todo= todo)
+            Navigation.pass(it,pass)
+        }
     }
 
     override fun getItemCount(): Int {

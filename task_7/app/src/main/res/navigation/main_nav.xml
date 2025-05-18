@@ -11,7 +11,7 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/main_tocreate"
+            android:id="@+id/main_to_create"
             app:destination="@id/createFragment" />
         <action
             android:id="@+id/main_to_update"
@@ -26,5 +26,9 @@
         android:id="@+id/updateFragment"
         android:name="com.ugurtansal.task_7.ui.fragment.UpdateFragment"
         android:label="fragment_update"
-        tools:layout="@layout/fragment_update" />
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="todo"
+            app:argType="com.ugurtansal.task_7.data.entity.ToDo" />
+    </fragment>
 </navigation>
