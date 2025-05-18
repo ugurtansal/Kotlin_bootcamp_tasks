@@ -1,4 +1,6 @@
 package com.ugurtansal.task_7.data.dataSource
 
-class ToDoDataSource () {
+import com.ugurtansal.task_7.room.ToDoDao
+
+class ToDoDataSource (toDoDao: ToDoDao) {
 }
