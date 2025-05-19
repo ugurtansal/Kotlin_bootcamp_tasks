@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.ugurtansal.task_7.R
 import com.ugurtansal.task_7.databinding.FragmentUpdateBinding
 import com.ugurtansal.task_7.ui.viewModel.UpdateViewModel
 import dagger.hilt.android.AndroidEntryPoint

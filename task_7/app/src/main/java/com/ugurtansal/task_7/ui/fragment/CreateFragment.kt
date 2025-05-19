@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import com.ugurtansal.task_7.databinding.FragmentCreateBinding
 import com.ugurtansal.task_7.ui.viewModel.CreateViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.getValue
 
 @AndroidEntryPoint
 class CreateFragment : Fragment() {

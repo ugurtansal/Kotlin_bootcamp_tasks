@@ -1,20 +1,21 @@
+package com.ugurtansal.task_7.ui.fragment
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.navigation.R
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.ugurtansal.task_7.data.entity.ToDo
 import com.ugurtansal.task_7.databinding.FragmentMainBinding
 import com.ugurtansal.task_7.ui.adapter.ToDoAdapter
 import com.ugurtansal.task_7.ui.viewModel.MainViewModel
 import com.ugurtansal.task_7.utils.pass
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
+import com.ugurtansal.task_7.R
+
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -30,7 +31,7 @@ class MainFragment : Fragment() {
         binding.toDoRv.layoutManager= StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
 
         binding.cvAdd.setOnClickListener {
-            Navigation.pass(it, com.ugurtansal.task_7.R.id.main_to_create)
+            Navigation.pass(it,R.id.main_to_create)
         }
 
         viewModel.toDoList.observe(viewLifecycleOwner){

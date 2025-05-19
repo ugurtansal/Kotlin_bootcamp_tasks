@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.ugurtansal.task_7.data.entity.ToDo
 import com.ugurtansal.task_7.databinding.CardDesignBinding
 import com.ugurtansal.task_7.ui.viewModel.MainViewModel
+import com.ugurtansal.task_7.ui.fragment.MainFragmentDirections
 import com.ugurtansal.task_7.utils.pass
 
 class ToDoAdapter(var mContext: Context, var toDoList: List<ToDo>, var viewModel: MainViewModel)
