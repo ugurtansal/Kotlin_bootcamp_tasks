@@ -33,8 +33,8 @@ class ToDoAdapter(var mContext: Context, var toDoList: List<ToDo>, var viewModel
         t.toDoTask.text= todo.task
 
         t.imageViewDelete.setOnClickListener {
-            Snackbar.make(it,"${todo.task} silinsin?", Snackbar.LENGTH_SHORT)
-                .setAction("Evet") {
+            Snackbar.make(it,"Do you want to remove ${todo.task}?", Snackbar.LENGTH_SHORT)
+                .setAction("Yes") {
                     viewModel.delete(todo.id);
                 }.show()
         }
