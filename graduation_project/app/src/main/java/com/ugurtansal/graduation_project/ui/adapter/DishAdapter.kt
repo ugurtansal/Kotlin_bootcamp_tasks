@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.databinding.CardDesignBinding
+import com.ugurtansal.graduation_project.utils.showImg
 
 class DishAdapter(var mContext: Context, var dishList: List<Dish>) : RecyclerView.Adapter<DishAdapter.CardDesignHolder>() {
 
@@ -39,7 +40,3 @@ class DishAdapter(var mContext: Context, var dishList: List<Dish>) : RecyclerVie
 
 }
 
-fun showImg(resimAdi:String,imageView: ImageView){
-    val url="http://kasimadalan.pe.hu/yemekler/resimler/ayran.png" // Example URL, replace with actual image URL
-    Glide.with(imageView).load(url).override(450,450).into(imageView)
-}
