@@ -7,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.ugurtansal.graduation_project.R
 import com.ugurtansal.graduation_project.databinding.FragmentProfileBinding
+import com.ugurtansal.graduation_project.ui.viewModel.ProfileViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
+    private lateinit var viewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

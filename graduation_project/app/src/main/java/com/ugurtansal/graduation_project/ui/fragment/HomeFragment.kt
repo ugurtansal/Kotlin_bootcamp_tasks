@@ -11,10 +11,13 @@ import com.ugurtansal.graduation_project.R
 import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.databinding.FragmentHomeBinding
 import com.ugurtansal.graduation_project.ui.adapter.DishAdapter
+import com.ugurtansal.graduation_project.ui.viewModel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

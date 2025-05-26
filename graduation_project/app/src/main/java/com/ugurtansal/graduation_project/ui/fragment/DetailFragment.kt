@@ -9,17 +9,20 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ugurtansal.graduation_project.R
 import com.ugurtansal.graduation_project.databinding.FragmentDetailBinding
+import com.ugurtansal.graduation_project.ui.viewModel.DetailViewModel
 import com.ugurtansal.graduation_project.utils.addFavorite
 import com.ugurtansal.graduation_project.utils.addToCart
 import com.ugurtansal.graduation_project.utils.removeFavorite
 import com.ugurtansal.graduation_project.utils.setupCounter
 import com.ugurtansal.graduation_project.utils.setupFavoriteToggle
 import com.ugurtansal.graduation_project.utils.showImg
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
 
-
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
+    private lateinit var viewModel: DetailViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

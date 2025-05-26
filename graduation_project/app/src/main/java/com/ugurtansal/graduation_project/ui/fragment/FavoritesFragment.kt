@@ -11,15 +11,13 @@ import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.databinding.FragmentFavoritesBinding
 import com.ugurtansal.graduation_project.databinding.FragmentHomeBinding
 import com.ugurtansal.graduation_project.ui.adapter.CartAdapter
+import com.ugurtansal.graduation_project.ui.viewModel.FavoritesViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
+@AndroidEntryPoint
 class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding
+    private lateinit var viewModel: FavoritesViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
