@@ -39,10 +39,14 @@ class HomeFragment : Fragment() {
             Dish(0, "Pizza", 90.0,"pizza.png")
         )
 
+        //Burada localden çekilen favorilerimizi listeleyip adaptere göndereceğiz !!!!!!!!!!!!!!!!!!!!!!!!!!
         val adapter=DishAdapter(requireContext(),dishes)
         binding.dishRv.adapter= adapter
 
         binding.dishRv.layoutManager = GridLayoutManager(requireContext(), 2)
+
+
+
 
 
         return binding.root

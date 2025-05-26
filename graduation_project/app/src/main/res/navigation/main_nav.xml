@@ -9,5 +9,33 @@
         android:id="@+id/homeFragment"
         android:name="com.ugurtansal.graduation_project.ui.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.ugurtansal.graduation_project.ui.fragment.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="dish"
+            app:argType="com.ugurtansal.graduation_project.data.entity.Dish" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.ugurtansal.graduation_project.ui.fragment.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.ugurtansal.graduation_project.ui.fragment.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ugurtansal.graduation_project.ui.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

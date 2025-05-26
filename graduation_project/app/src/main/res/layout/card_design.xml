@@ -9,12 +9,15 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/dishesCardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rounde_sv_bg"
+        android:elevation="10dp"
         android:paddingBottom="20dp"
         app:cardBackgroundColor="@color/my_grey"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -52,6 +55,7 @@
                 android:text="Food Name"
                 android:textColor="@color/my_blue_dark"
                 android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +65,7 @@
                 android:id="@+id/const_delivery_icn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/food_name"
@@ -73,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="16dp"
                 android:text="Fast Delivery"
                 android:textColor="@color/my_yellow"
                 android:textSize="18sp"
@@ -90,6 +94,7 @@
                 android:text="100₺"
                 android:textColor="@color/my_blue_dark"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/const_delivery_icn" />
 

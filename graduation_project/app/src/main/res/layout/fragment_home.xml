@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/my_white"
+    android:background="@color/my_grey"
     tools:context=".ui.fragment.HomeFragment">
 
     <TextView
@@ -15,7 +15,7 @@
         android:layout_marginTop="49dp"
         android:layout_marginEnd="49dp"
         android:fontFamily="@font/aladin"
-        android:text="Sen iste biz getirelim"
+        android:text="Seçkin tatlar, emrinizde."
         android:textColor="@color/my_blue_dark"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"

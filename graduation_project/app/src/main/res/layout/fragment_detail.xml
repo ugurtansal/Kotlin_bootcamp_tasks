@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/my_white"
     tools:context=".ui.fragment.DetailFragment">
 
     <ImageView
@@ -23,6 +24,7 @@
         android:layout_width="231dp"
         android:layout_height="57dp"
         android:layout_marginTop="32dp"
+        app:cardBackgroundColor="@color/my_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,7 +162,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/my_white">
 
             <Button
                 android:id="@+id/btn_add_cart"

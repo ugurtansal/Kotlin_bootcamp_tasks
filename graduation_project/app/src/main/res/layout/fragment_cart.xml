@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/my_white"
-    tools:context=".ui.fragment.CartFragment" >
+    android:background="@color/my_grey"
+    tools:context=".ui.fragment.CartFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_pass_paid"
@@ -81,10 +81,10 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:background="@color/my_white"
         android:id="@+id/cart_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/my_grey"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

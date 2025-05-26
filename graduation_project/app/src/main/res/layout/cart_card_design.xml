@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/my_white"
+    android:background="@color/my_grey"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -13,12 +13,13 @@
         android:layout_height="100dp"
         android:layout_margin="8dp"
         android:background="@color/my_white"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="@color/my_grey"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/my_white">
 
             <ImageView
                 android:id="@+id/imageViewDelete"
@@ -38,6 +39,7 @@
                 android:layout_marginStart="16dp"
                 android:text="Izgara Somon"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/piece_of_food"
                 app:layout_constraintStart_toEndOf="@+id/food_img"
                 app:layout_constraintTop_toTopOf="parent" />
