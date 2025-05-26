@@ -46,6 +46,8 @@ class CartFragment : Fragment() {
 
         binding.cartRv.layoutManager = LinearLayoutManager(requireContext())
 
+
+
         return binding.root
     }
 

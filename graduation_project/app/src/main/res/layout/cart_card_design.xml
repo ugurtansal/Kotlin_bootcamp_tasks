@@ -22,7 +22,7 @@
             android:background="@color/my_white">
 
             <ImageView
-                android:id="@+id/imageViewDelete"
+                android:id="@+id/delete_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -48,15 +48,14 @@
                 android:id="@+id/piece_of_food"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
                 android:layout_marginBottom="16dp"
                 android:text="3"
                 android:textColor="@color/my_blue"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/plus_iv"
-                app:layout_constraintStart_toEndOf="@+id/minus_iv" />
+                app:layout_constraintEnd_toStartOf="@+id/btn_add"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_minus" />
 
             <ImageView
                 android:id="@+id/food_img"
@@ -66,25 +65,32 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <ImageView
-                android:id="@+id/minus_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_minus"
+                android:layout_width="44dp"
+                android:layout_height="31dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
+                android:drawableRight="@drawable/minus_icn"
+                android:textStyle="bold"
+                app:backgroundTint="@color/my_white"
+                app:cornerRadius="10dp"
+                app:iconGravity="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/food_img"
-                app:srcCompat="@drawable/minus_icn" />
+                app:layout_constraintStart_toEndOf="@+id/food_img" />
 
-            <ImageView
-                android:id="@+id/plus_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add"
+                android:layout_width="44dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginBottom="16dp"
+                android:drawableRight="@drawable/add_icn"
+                app:backgroundTint="@color/my_white"
+                app:cornerRadius="10dp"
+                app:iconGravity="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/piece_of_food"
-                app:srcCompat="@drawable/add_icn" />
+                app:layout_constraintStart_toEndOf="@+id/piece_of_food" />
 
             <TextView
                 android:id="@+id/price_tv"

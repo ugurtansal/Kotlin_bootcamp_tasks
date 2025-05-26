@@ -45,27 +45,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.bottomNavMainActivity.setOnItemSelectedListener {item->
-            when (item.itemId) {
-                R.id.bottom_nav_home -> {
-                    loadFragment(HomeFragment())
-                    true
-                }
-                R.id.bottom_nav_favorites -> {
-                    loadFragment(FavoritesFragment())
-                    true
-                }
-                R.id.bottom_nav_cart -> {
-                    loadFragment(CartFragment())
-                    true
-                }
-                R.id.bottom_nav_Profile -> {
-                    loadFragment(ProfileFragment())
-                    true
-                }
-                else -> false
-            }
-        }
+
+
+
 
 
         setContentView(binding.root)
@@ -74,11 +56,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun loadFragment(fragment: Fragment) {
 
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainerView, fragment)
-            .commit()
-    }
 }

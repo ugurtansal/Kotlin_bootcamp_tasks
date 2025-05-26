@@ -14,6 +14,7 @@ import com.ugurtansal.graduation_project.utils.addToCart
 import com.ugurtansal.graduation_project.utils.removeFavorite
 import com.ugurtansal.graduation_project.utils.setupCounter
 import com.ugurtansal.graduation_project.utils.setupFavoriteToggle
+import com.ugurtansal.graduation_project.utils.showImg
 import kotlin.getValue
 
 
@@ -40,6 +41,7 @@ class DetailFragment : Fragment() {
         binding.priceTxt.text=dish.price.toString()
         binding.foodNameTxt.text=dish.name
         binding.totalPriceTxt.text=dish.price.toString()
+        showImg("ssss", binding.foodIv)
 
 //        binding.closeIv.setOnClickListener {
 //            findNavController().popBackStack()
@@ -71,6 +73,10 @@ class DetailFragment : Fragment() {
 
         binding.btnAddCart.setOnClickListener {
             addToCart(it,dish.id) //extension function
+        }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
         }
 
 

@@ -57,6 +57,9 @@ fun ImageView.setupFavoriteToggle(
 fun addToCart(it: View, id: Int) {
     Toast.makeText(it.context, "Added to cart", Toast.LENGTH_SHORT).show()
 }
+fun removeFromCart(it: View, id: Int) {
+    Toast.makeText(it.context, "Removed from cart", Toast.LENGTH_SHORT).show()
+}
 
 fun setupCounter(
     minusBtn: Button,
