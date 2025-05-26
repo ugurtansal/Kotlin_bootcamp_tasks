@@ -1,7 +1,9 @@
 package com.ugurtansal.graduation_project.utils
 
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
@@ -55,3 +57,33 @@ fun ImageView.setupFavoriteToggle(
 fun addToCart(it: View, id: Int) {
     Toast.makeText(it.context, "Added to cart", Toast.LENGTH_SHORT).show()
 }
+
+fun setupCounter(
+    minusBtn: Button,
+    plusBtn: Button,
+    countTextView: TextView,
+    initialValue: Int = 1,
+    min: Int = 1,
+    max: Int = 99,
+    onValueChanged: ((Int) -> Unit)? = null
+) {
+    var count = initialValue
+    countTextView.text = count.toString()
+
+    minusBtn.setOnClickListener {
+        if (count > min) {
+            count--
+            countTextView.text = count.toString()
+            onValueChanged?.invoke(count)
+        }
+    }
+
+    plusBtn.setOnClickListener {
+        if (count < max) {
+            count++
+            countTextView.text = count.toString()
+            onValueChanged?.invoke(count)
+        }
+    }
+}
+

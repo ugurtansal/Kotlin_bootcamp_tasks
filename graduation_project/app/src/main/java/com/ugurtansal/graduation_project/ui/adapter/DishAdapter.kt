@@ -36,7 +36,7 @@ class DishAdapter(var mContext: Context, var dishList: List<Dish>) : RecyclerVie
         val dish=dishList.get(position)
         val t = holder.design
 
-        t.favoriteBorderIv.setupFavoriteToggle(
+        t.favoriteBorderIv.setupFavoriteToggle( //extension function
             initialState = false,
             onAdd = {
                 addFavorite(it = View(mContext), dish.id)
