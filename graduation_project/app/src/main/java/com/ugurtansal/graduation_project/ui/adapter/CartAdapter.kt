@@ -57,28 +57,10 @@ class CartAdapter (val mContext: Context, val dishList:List<Cart>, val mode: Str
                 price = cartDish.dishPrice,
                 image = cartDish.dishImage
             )
-            t.cardViewRow.setOnClickListener {
-                val pass= FavoritesFragmentDirections.actionFavoritesFragmentToDetailFragment(dish = dish)
-                Navigation.pass(it, pass)
-            }
-            t.btnAdd.visibility = View.GONE
-            t.btnMinus.visibility = View.GONE
-            t.pieceOfFood.visibility = View.GONE
-            t.priceTv.visibility = View.GONE
-            t.deleteIv.setImageResource(R.drawable.favorite_icn)
 
-            t.deleteIv.setupFavoriteToggle( //extension function
-                initialState = true,
-                onAdd = {
-                    addFavorite(it = View(mContext), dish.id)
-                },
-                onRemove = {
-                    removeFavorite(it= View(mContext), dish.id)
-                }
-            )
 
         }
-        else{
+
             t.pieceOfFood.text=cartDish.dishQuantity
             t.priceTv.text="${(cartDish.dishQuantity.toInt())*(cartDish.dishPrice.toInt())} ₺"
             t.deleteIv.setOnClickListener {
@@ -109,7 +91,7 @@ class CartAdapter (val mContext: Context, val dishList:List<Cart>, val mode: Str
                t.pieceOfFood.text = newValue.toString()
             }
 
-        }
+
     }
 
     override fun getItemCount(): Int {

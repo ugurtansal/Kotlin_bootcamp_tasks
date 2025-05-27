@@ -42,6 +42,15 @@ class CartFragment : Fragment() {
             binding.cartRv.layoutManager = LinearLayoutManager(requireContext())
         }
 
+        var totalPrice = 0;
+
+        for (cart in viewModel.cartList.value){
+                totalPrice += cart.dishPrice.toInt()
+        }
+
+        binding.priceTxt.text = "$totalPrice ₺"
+
+
 
 
         return binding.root
