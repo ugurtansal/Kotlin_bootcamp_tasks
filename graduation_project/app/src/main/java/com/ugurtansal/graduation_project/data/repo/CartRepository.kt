@@ -1,5 +1,6 @@
 package com.ugurtansal.graduation_project.data.repo
 
+import android.util.Log
 import com.ugurtansal.graduation_project.data.dataSource.CartDataSource
 import com.ugurtansal.graduation_project.data.entity.Cart
 
@@ -11,6 +12,7 @@ class CartRepository(var cartDataSource: CartDataSource) {
 
     suspend fun addToCart(foodName: String, foodImage: String, foodPrice: Int, orderCount: Int) {
         cartDataSource.addToCart(foodName, foodImage, foodPrice, orderCount)
+        Log.e("CartRepository", "Item added to cart: $foodName, Price: $foodPrice, Count: $orderCount")
     }
 
     suspend fun removeFromCart(cartDishId: Int) {

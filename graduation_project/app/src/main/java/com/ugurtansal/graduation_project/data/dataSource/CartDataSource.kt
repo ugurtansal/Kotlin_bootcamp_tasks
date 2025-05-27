@@ -1,5 +1,6 @@
 package com.ugurtansal.graduation_project.data.dataSource
 
+import android.util.Log
 import com.ugurtansal.graduation_project.data.entity.Cart
 import com.ugurtansal.graduation_project.retrofit.CartDao
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +17,7 @@ class CartDataSource (var cartDao: CartDao){
     suspend fun addToCart(foodName: String, foodImage: String, foodPrice: Int, orderCount: Int) {
 
         val crudResponse = cartDao.addToCart(foodName, foodImage, foodPrice, orderCount, userName)
+        Log.e("CartDataSource", "Item added to cart: $foodName, Price: $foodPrice, Count: $orderCount")
     }
 
     suspend fun removeFromCart(cartDishId: Int) {

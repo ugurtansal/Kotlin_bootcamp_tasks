@@ -10,9 +10,9 @@ import retrofit2.http.POST
 
 interface CartDao {
 
-    @GET("yemekler/sepettekiYemekleriGetir.php")
+    @POST("yemekler/sepettekiYemekleriGetir.php")
     @FormUrlEncoded
-    suspend fun loadCart(@Field("kullanici_adi") userName: String): CartResponse
+    suspend fun loadCart(@Field("kullanici_adi") userName:String): CartResponse
 
 
     @POST("yemekler/sepeteYemekEkle.php")

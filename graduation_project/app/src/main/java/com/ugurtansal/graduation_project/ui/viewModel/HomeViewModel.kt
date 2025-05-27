@@ -1,10 +1,12 @@
 package com.ugurtansal.graduation_project.ui.viewModel
 
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.data.repo.CartRepository
 import com.ugurtansal.graduation_project.data.repo.DishRepository
+import com.ugurtansal.graduation_project.ui.fragment.HomeFragment
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -51,6 +53,7 @@ class HomeViewModel @Inject constructor(var dishRepository: DishRepository,var c
     fun addToCart(dish: Dish, orderCount: Int = 1) {
         CoroutineScope(Dispatchers.Main).launch {
             cartRepository.addToCart(dish.name, dish.image, dish.price.toInt(),orderCount )
+
         }
     }
 }

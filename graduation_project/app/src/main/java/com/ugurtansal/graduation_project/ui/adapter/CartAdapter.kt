@@ -9,6 +9,7 @@ import android.widget.ImageView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.ugurtansal.graduation_project.data.entity.Cart
 import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.databinding.CardDesignBinding
 import com.ugurtansal.graduation_project.databinding.CartCardDesignBinding
@@ -22,7 +23,7 @@ import com.ugurtansal.graduation_project.utils.setupCounter
 import com.ugurtansal.graduation_project.utils.setupFavoriteToggle
 import com.ugurtansal.graduation_project.utils.showImg
 
-class CartAdapter (val mContext: Context, val dishList:List<Dish>,val mode: String): RecyclerView.Adapter<CartAdapter.CartCardDesignHolder>(){
+class CartAdapter (val mContext: Context, val dishList:List<Cart>, val mode: String): RecyclerView.Adapter<CartAdapter.CartCardDesignHolder>(){
 
     inner class CartCardDesignHolder(var design: CartCardDesignBinding) : RecyclerView.ViewHolder(design.root)
 
@@ -42,11 +43,17 @@ class CartAdapter (val mContext: Context, val dishList:List<Dish>,val mode: Stri
         val dish=dishList.get(position)
         val t = holder.design
 
-        t.foodName.text = dish.name
-        t.priceTv.text = "${dish.price} ₺"
-        showImg("ssss", t.foodImg)
+        t.foodName.text = dish.dishName
+        t.priceTv.text = "${dish.dishPrice} ₺"
+        showImg(dish.dishImage, t.foodImg)
 
         if (mode == "favorite") {
+            val dish= Dish(
+                id = dish.cartDishId,
+                name = dish.dishName,
+                price = dish.dishPrice,
+                image = dish.dishImage
+            )
             t.cardViewRow.setOnClickListener {
                 val pass= FavoritesFragmentDirections.actionFavoritesFragmentToDetailFragment(dish = dish)
                 Navigation.pass(it, pass)
@@ -70,6 +77,12 @@ class CartAdapter (val mContext: Context, val dishList:List<Dish>,val mode: Stri
         }
         else{
             t.cardViewRow.setOnClickListener {
+                val dish= Dish(
+                    id = dish.cartDishId,
+                    name = dish.dishName,
+                    price = dish.dishPrice,
+                    image = dish.dishImage
+                )
                 val pass= CartFragmentDirections.actionCartFragmentToDetailFragment(dish = dish)
                 Navigation.pass(it, pass)
             }
@@ -82,12 +95,12 @@ class CartAdapter (val mContext: Context, val dishList:List<Dish>,val mode: Stri
                 max = 20
             ) { newValue ->
 
-                t.priceTv.text = "${newValue * (dish.price.toInt())} ₺"
+                t.priceTv.text = "${newValue * (dish.dishPrice.toInt())} ₺"
                t.pieceOfFood.text = newValue.toString()
             }
 
             t.deleteIv.setOnClickListener {
-                removeFavorite(it= View(mContext), dish.id)
+                removeFavorite(it= View(mContext), dish.cartDishId)
             }
         }
     }

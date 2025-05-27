@@ -1,5 +1,6 @@
 package com.ugurtansal.graduation_project.ui.viewModel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ugurtansal.graduation_project.data.entity.Cart
@@ -25,7 +26,11 @@ class CartViewModel @Inject constructor(var cartRepository: CartRepository) : Vi
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 cartList.value = cartRepository.loadCartItems()
+                for (cart in cartList.value!!) {
+                    Log.e("CartViewModel", "Dish ID: ${cart.cartDishId}, Dish Name: ${cart.dishName}")
+                }
             } catch (e: Exception) {
+                Log.e("CartViewModel", "CartViewModel de hata olustu: ${e.message}")
                 e.printStackTrace()
             }
         }
