@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.ugurtansal.graduation_project.R
 
 fun showImg(resimAdi:String,imageView: ImageView){
-    val url="http://kasimadalan.pe.hu/yemekler/resimler/ayran.png" // Example URL, replace with actual image URL
+    val url="http://kasimadalan.pe.hu/yemekler/resimler/$resimAdi" // Example URL, replace with actual image URL
     Glide.with(imageView).load(url).override(450,450).into(imageView)
 }
 

@@ -49,7 +49,7 @@ class DishAdapter(var mContext: Context, var dishList: List<Dish>,var viewModel:
 
         t.foodName.text = dish.name
         t.priceTxt.text = "${dish.price} ₺"
-        showImg("ssss", t.foodImgIv)
+        showImg(dish.image, t.foodImgIv)
 
 
         t.dishesCardView.setOnClickListener {

@@ -40,6 +40,9 @@ class HomeFragment : Fragment() {
         }
 
 
+
+
+
         //Burada localden çekilen favorilerimizi listeleyip adaptere göndereceğiz !!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
