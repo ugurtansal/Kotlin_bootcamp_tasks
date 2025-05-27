@@ -1,6 +1,7 @@
 package com.ugurtansal.graduation_project.retrofit
 
 import com.ugurtansal.graduation_project.data.entity.CRUDResponse
+import com.ugurtansal.graduation_project.data.entity.CartResponse
 import com.ugurtansal.graduation_project.data.repo.CartRepository
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -11,7 +12,7 @@ interface CartDao {
 
     @GET("yemekler/sepettekiYemekleriGetir.php")
     @FormUrlEncoded
-    suspend fun loadCart(@Field("kullanici_adi") userName: String): CartRepository
+    suspend fun loadCart(@Field("kullanici_adi") userName: String): CartResponse
 
 
     @POST("yemekler/sepeteYemekEkle.php")

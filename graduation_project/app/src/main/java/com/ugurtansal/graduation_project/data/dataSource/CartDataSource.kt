@@ -2,23 +2,24 @@ package com.ugurtansal.graduation_project.data.dataSource
 
 import com.ugurtansal.graduation_project.data.entity.Cart
 import com.ugurtansal.graduation_project.retrofit.CartDao
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class CartDataSource (var cartDao: CartDao){
+    val userName="ugur_tans";
 
-    suspend fun loadCartItems(): List<Cart> {
+    suspend fun loadCartItems(): List<Cart> = withContext(Dispatchers.IO) {
         // Simulate network call to load cart items
-        return listOf(
-            Cart(1, "Product 1", "a", "a","s","c"),
-            Cart(2, "Product 2", "s", "x", "s","c"),
-        )
+        return@withContext  cartDao.loadCart(userName).cartDishes
     }
 
-    suspend fun addToCart(dishId: Int, quantity: Int) {
+    suspend fun addToCart(foodName: String, foodImage: String, foodPrice: Int, orderCount: Int) {
 
+        val crudResponse = cartDao.addToCart(foodName, foodImage, foodPrice, orderCount, userName)
     }
 
-    suspend fun removeFromCart(dishId: Int) {
-        // Simulate network call to remove a dish from the cart
+    suspend fun removeFromCart(cartDishId: Int) {
+        val crudResponse = cartDao.removeFromCart(cartDishId, userName)
     }
 
     suspend fun updateCartItemQuantity(dishId: Int, quantity: Int) {
