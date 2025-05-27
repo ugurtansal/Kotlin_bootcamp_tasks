@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.data.repo.CartRepository
 import com.ugurtansal.graduation_project.data.repo.DishRepository
+import com.ugurtansal.graduation_project.data.repo.FavoritesRepository
 import com.ugurtansal.graduation_project.ui.fragment.HomeFragment
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -15,7 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(var dishRepository: DishRepository,var cartRepository: CartRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(var dishRepository: DishRepository,var cartRepository: CartRepository,var favoritesRepository: FavoritesRepository) : ViewModel() {
     var dishesList= MutableLiveData<List<Dish>>()
 
     init {
@@ -33,22 +34,17 @@ class HomeViewModel @Inject constructor(var dishRepository: DishRepository,var c
         }
     }
 
-    fun search(searchedWord: String) {
-        // Logic to search dishes based on the searched word
-        // For example:
-        // dishesList.value = dishRepository.searchDishes(searchedWord)
-    }
 
     fun addToFavorites(dish: Dish) {
-        // Logic to add a dish to favorites
-        // For example:
-        // dishRepository.addToFavorites(dish)
+        CoroutineScope(Dispatchers.Main).launch {
+            favoritesRepository.saveFavorite(dish.name, dish.image, dish.price.toInt(), dish.id)
+        }
     }
 
     fun removeFromFavorites(dish: Dish) {
-        // Logic to remove a dish from favorites
-        // For example:
-        // dishRepository.removeFromFavorites(dish)
+        CoroutineScope(Dispatchers.Main).launch {
+            favoritesRepository.deleteFavorite(dish.name)
+        }
     }
 
     fun addToCart(foodName: String, foodImage: String, foodPrice: Int, orderCount: Int) {

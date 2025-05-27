@@ -10,15 +10,16 @@ import com.ugurtansal.graduation_project.R
 import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.databinding.CardDesignBinding
 import com.ugurtansal.graduation_project.ui.fragment.HomeFragmentDirections
+import com.ugurtansal.graduation_project.ui.viewModel.FavoritesViewModel
 import com.ugurtansal.graduation_project.ui.viewModel.HomeViewModel
 import com.ugurtansal.graduation_project.utils.addFavorite
-import com.ugurtansal.graduation_project.utils.addToCart
+
 import com.ugurtansal.graduation_project.utils.pass
 import com.ugurtansal.graduation_project.utils.removeFavorite
 import com.ugurtansal.graduation_project.utils.setupFavoriteToggle
 import com.ugurtansal.graduation_project.utils.showImg
 
-class DishAdapter(var mContext: Context, var dishList: List<Dish>,var viewModel: HomeViewModel) : RecyclerView.Adapter<DishAdapter.CardDesignHolder>() {
+class DishAdapter(var mContext: Context, var dishList: List<Dish>,var viewModel: HomeViewModel, var favoritesViewModel: FavoritesViewModel) : RecyclerView.Adapter<DishAdapter.CardDesignHolder>() {
 
     inner class CardDesignHolder(var design: CardDesignBinding) : RecyclerView.ViewHolder(design.root)
 
@@ -37,13 +38,16 @@ class DishAdapter(var mContext: Context, var dishList: List<Dish>,var viewModel:
         val dish=dishList.get(position)
         val t = holder.design
 
-        t.favoriteBorderIv.setupFavoriteToggle( //extension function
-            initialState = false,
+        val favorites = favoritesViewModel.favoritesList.value ?: emptyList()
+        val isFavorite = favorites.any { it.name == dish.name}
+
+        t.favoriteBorderIv.setupFavoriteToggle(
+            initialState = isFavorite,
             onAdd = {
-                addFavorite(it = View(mContext), dish.id)
+                favoritesViewModel.addToFavorites(dish)
             },
             onRemove = {
-                removeFavorite(it= View(mContext), dish.id)
+                favoritesViewModel.delete(dish.name)
             }
         )
 

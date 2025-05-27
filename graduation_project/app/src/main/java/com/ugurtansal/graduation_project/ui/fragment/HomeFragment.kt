@@ -12,6 +12,7 @@ import com.ugurtansal.graduation_project.R
 import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.databinding.FragmentHomeBinding
 import com.ugurtansal.graduation_project.ui.adapter.DishAdapter
+import com.ugurtansal.graduation_project.ui.viewModel.FavoritesViewModel
 import com.ugurtansal.graduation_project.ui.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,10 +20,13 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
+    private lateinit var favoritesViewModel: FavoritesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel: HomeViewModel by viewModels()
+        val tempFavoritesViewModel: FavoritesViewModel by viewModels()
+        favoritesViewModel = tempFavoritesViewModel
         viewModel = tempViewModel
 
     }
@@ -34,7 +38,7 @@ class HomeFragment : Fragment() {
         binding= FragmentHomeBinding.inflate(inflater, container, false)
 
         viewModel.dishesList.observe(viewLifecycleOwner) {
-            val adapter = DishAdapter(requireContext(), it,viewModel)
+            val adapter = DishAdapter(requireContext(), it,viewModel, favoritesViewModel)
                 binding.dishRv.adapter = adapter
                 binding.dishRv.layoutManager = GridLayoutManager(requireContext(), 2)
         }
@@ -56,6 +60,8 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+
+        favoritesViewModel.loadFavorites()
         viewModel.loadDishes()
     }
 
