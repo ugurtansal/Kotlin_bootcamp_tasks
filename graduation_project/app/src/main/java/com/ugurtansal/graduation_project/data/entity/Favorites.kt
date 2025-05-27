@@ -13,6 +13,6 @@ data class Favorites  (
     @ColumnInfo(name = "name")@NotNull var name: String,
     @ColumnInfo(name = "image")@NotNull var image: String,
     @ColumnInfo(name="price")@NotNull var price: Int,
-    @ColumnInfo(name="id") var id: Int=0
+    @ColumnInfo(name="id") var id: Int? = null
 ): Serializable{
 }

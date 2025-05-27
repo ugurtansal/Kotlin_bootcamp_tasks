@@ -1,5 +1,6 @@
 package com.ugurtansal.graduation_project.ui.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,7 +28,9 @@ class FavoritesViewModel @Inject constructor(var favoritesRepository: FavoritesR
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 _favoritesList.value = favoritesRepository.loadFavorites()
+                Log.e("FavoritesViewModel", "Favorites loaded: ${_favoritesList.value?.size} items")
             } catch (e: Exception) {
+                Log.e("FavoritesViewModel", "Error loading favorites", e)
                 e.printStackTrace() // Handle the exception appropriately
             }
         }

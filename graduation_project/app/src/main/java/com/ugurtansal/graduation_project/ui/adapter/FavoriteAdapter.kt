@@ -43,7 +43,7 @@ class FavoriteAdapter (var mContext : Context, var favorites: List<Favorites>, v
 
         t.cardViewRow.setOnClickListener {
             val dish= Dish(
-                id = favorite.id,
+                id = favorite.id?: 0,
                 name = favorite.name,
                 image = favorite.image,
                 price = favorite.price.toString()
@@ -61,7 +61,7 @@ class FavoriteAdapter (var mContext : Context, var favorites: List<Favorites>, v
             initialState = true,
             onAdd = {
                viewModel.addToFavorites(dish= Dish(
-                    id = favorite.id,
+                    id = favorite.id ?: 0,
                     name = favorite.name,
                     image = favorite.image,
                     price = favorite.price.toString()

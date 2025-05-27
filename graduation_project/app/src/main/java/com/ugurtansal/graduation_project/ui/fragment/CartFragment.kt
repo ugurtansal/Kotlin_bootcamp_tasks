@@ -35,20 +35,19 @@ class CartFragment : Fragment() {
         // Inflate the layout for this fragment
         binding=FragmentCartBinding.inflate(inflater,container,false)
 
-        viewModel.cartList.observe(viewLifecycleOwner) {
-            val adapter = CartAdapter(requireContext(), it, "CartFragment",  onRemoveFromCart = { id -> viewModel.removeFromCart(id) })
+        viewModel.cartList.observe(viewLifecycleOwner) {cartList ->
+            val adapter = CartAdapter(requireContext(), cartList, "CartFragment",  onRemoveFromCart = { id -> viewModel.removeFromCart(id) })
             binding.cartRv.adapter = adapter
 
             binding.cartRv.layoutManager = LinearLayoutManager(requireContext())
+
+            val totalPrice = cartList.sumOf { (it.dishPrice.toInt() * it.dishQuantity.toInt()) }
+            binding.priceTxt.text = "$totalPrice ₺"
         }
 
-        var totalPrice = 0;
 
-        for (cart in viewModel.cartList.value){
-                totalPrice += cart.dishPrice.toInt()
-        }
 
-        binding.priceTxt.text = "$totalPrice ₺"
+
 
 
 
