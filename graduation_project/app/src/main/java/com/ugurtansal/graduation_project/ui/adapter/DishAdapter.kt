@@ -10,6 +10,7 @@ import com.ugurtansal.graduation_project.R
 import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.databinding.CardDesignBinding
 import com.ugurtansal.graduation_project.ui.fragment.HomeFragmentDirections
+import com.ugurtansal.graduation_project.ui.viewModel.HomeViewModel
 import com.ugurtansal.graduation_project.utils.addFavorite
 import com.ugurtansal.graduation_project.utils.addToCart
 import com.ugurtansal.graduation_project.utils.pass
@@ -17,7 +18,7 @@ import com.ugurtansal.graduation_project.utils.removeFavorite
 import com.ugurtansal.graduation_project.utils.setupFavoriteToggle
 import com.ugurtansal.graduation_project.utils.showImg
 
-class DishAdapter(var mContext: Context, var dishList: List<Dish>) : RecyclerView.Adapter<DishAdapter.CardDesignHolder>() {
+class DishAdapter(var mContext: Context, var dishList: List<Dish>,var viewModel: HomeViewModel) : RecyclerView.Adapter<DishAdapter.CardDesignHolder>() {
 
     inner class CardDesignHolder(var design: CardDesignBinding) : RecyclerView.ViewHolder(design.root)
 
@@ -59,7 +60,7 @@ class DishAdapter(var mContext: Context, var dishList: List<Dish>) : RecyclerVie
         }
 
         t.constAddShopIcn.setOnClickListener {
-            addToCart(it,dish.id)
+            viewModel.addToCart(dish,1)
         }
     }
 

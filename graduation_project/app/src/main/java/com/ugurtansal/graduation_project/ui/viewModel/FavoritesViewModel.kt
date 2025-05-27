@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.ugurtansal.graduation_project.data.entity.Dish
 import dagger.hilt.android.lifecycle.HiltViewModel
 
-@HiltViewModel
+//@HiltViewModel
 class FavoritesViewModel {
     var favoritesList= MutableLiveData<List<Dish>>()
 

@@ -21,9 +21,13 @@ class HomeViewModel @Inject constructor(var dishRepository: DishRepository,var c
 
 
     fun loadDishes() {
-        // Logic to load dishes from repository or database
-        // For example:
-        // dishesList.value = dishRepository.getAllDishes()
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                dishesList.value = dishRepository.loadDishes() // Trigger the loading of dishes
+            } catch (e: Exception) {
+                e.printStackTrace() // Handle the exception appropriately
+            }
+        }
     }
 
     fun search(searchedWord: String) {

@@ -16,7 +16,9 @@ import com.ugurtansal.graduation_project.ui.fragment.DetailFragment
 import com.ugurtansal.graduation_project.ui.fragment.FavoritesFragment
 import com.ugurtansal.graduation_project.ui.fragment.HomeFragment
 import com.ugurtansal.graduation_project.ui.fragment.ProfileFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController

@@ -32,24 +32,24 @@ class CartFragment : Fragment() {
         // Inflate the layout for this fragment
         binding=FragmentCartBinding.inflate(inflater,container,false)
 
-        val dishes=listOf<Dish>(
-            Dish(0, "Izgara Somon", 150.0,"izgarasomon.png"),
-            Dish(0, "Izgara Tavuk", 120.0,"izgaratavuk.png"),
-            Dish(0, "Köfte", 100.0,"kofte.png"),
-            Dish(0, "Lazanya", 130.0,"lazanya.png"),
-            Dish(0, "Makarna", 80.0,"makarna.png"),
-            Dish(0, "Pizza", 90.0,"pizza.png"),
-            Dish(0, "Pizza", 90.0,"pizza.png"),
-            Dish(0, "Pizza", 90.0,"pizza.png"),
-            Dish(0, "Pizza", 90.0,"pizza.png")
-        )
-
-        val adapter= CartAdapter(requireContext(),dishes,"CartFragment")
-        binding.cartRv.adapter= adapter
-
-        binding.cartRv.layoutManager = LinearLayoutManager(requireContext())
-
-
+//        val dishes=listOf<Dish>(
+//            Dish(0, "Izgara Somon", 150.0,"izgarasomon.png"),
+//            Dish(0, "Izgara Tavuk", 120.0,"izgaratavuk.png"),
+//            Dish(0, "Köfte", 100.0,"kofte.png"),
+//            Dish(0, "Lazanya", 130.0,"lazanya.png"),
+//            Dish(0, "Makarna", 80.0,"makarna.png"),
+//            Dish(0, "Pizza", 90.0,"pizza.png"),
+//            Dish(0, "Pizza", 90.0,"pizza.png"),
+//            Dish(0, "Pizza", 90.0,"pizza.png"),
+//            Dish(0, "Pizza", 90.0,"pizza.png")
+//        )
+//
+//        val adapter= CartAdapter(requireContext(),dishes,"CartFragment")
+//        binding.cartRv.adapter= adapter
+//
+//        binding.cartRv.layoutManager = LinearLayoutManager(requireContext())
+//
+//
 
         return binding.root
     }
