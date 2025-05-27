@@ -1,10 +1,16 @@
 package com.ugurtansal.graduation_project.ui.viewModel
 
+import androidx.lifecycle.ViewModel
 import com.ugurtansal.graduation_project.data.entity.Dish
+import com.ugurtansal.graduation_project.data.repo.CartRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel {
+class DetailViewModel @Inject constructor(var cartRepository: CartRepository) : ViewModel() {
 
     fun addToFavorites(dish: Dish) {
         // Logic to add a dish to favorites
@@ -18,9 +24,9 @@ class DetailViewModel {
         // dishRepository.removeFromFavorites(dish)
     }
 
-    fun addToCart(dish: Dish) {
-        // Logic to add a dish to the cart
-        // For example:
-        // cartRepository.addToCart(dish)
+    fun addToCart(foodName: String, foodImage: String, foodPrice: Int, orderCount: Int) {
+        CoroutineScope(Dispatchers.Main).launch {
+            cartRepository.addToCart(foodName, foodImage, foodPrice, orderCount)
+        }
     }
 }

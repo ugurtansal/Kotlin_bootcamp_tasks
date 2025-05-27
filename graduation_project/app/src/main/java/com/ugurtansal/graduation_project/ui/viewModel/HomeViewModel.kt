@@ -1,11 +1,18 @@
 package com.ugurtansal.graduation_project.ui.viewModel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.ugurtansal.graduation_project.data.entity.Dish
+import com.ugurtansal.graduation_project.data.repo.CartRepository
+import com.ugurtansal.graduation_project.data.repo.DishRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel {
+class HomeViewModel @Inject constructor(var dishRepository: DishRepository,var cartRepository: CartRepository) : ViewModel() {
     var dishesList= MutableLiveData<List<Dish>>()
 
     init {
@@ -37,7 +44,9 @@ class HomeViewModel {
         // dishRepository.removeFromFavorites(dish)
     }
 
-    fun addToCart(dish: Dish) {
-
+    fun addToCart(dish: Dish, orderCount: Int = 1) {
+        CoroutineScope(Dispatchers.Main).launch {
+            cartRepository.addToCart(dish.name, dish.image, dish.price.toInt(),orderCount )
+        }
     }
 }
