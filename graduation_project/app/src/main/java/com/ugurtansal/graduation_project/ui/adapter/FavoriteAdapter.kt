@@ -12,9 +12,7 @@ import com.ugurtansal.graduation_project.data.entity.Favorites
 import com.ugurtansal.graduation_project.databinding.CartCardDesignBinding
 import com.ugurtansal.graduation_project.ui.fragment.FavoritesFragmentDirections
 import com.ugurtansal.graduation_project.ui.viewModel.FavoritesViewModel
-import com.ugurtansal.graduation_project.utils.addFavorite
 import com.ugurtansal.graduation_project.utils.pass
-import com.ugurtansal.graduation_project.utils.removeFavorite
 import com.ugurtansal.graduation_project.utils.setupFavoriteToggle
 import com.ugurtansal.graduation_project.utils.showImg
 
@@ -35,20 +33,20 @@ class FavoriteAdapter (var mContext : Context, var favorites: List<Favorites>, v
         holder: CartCardDesignHolder,
         position: Int
     ) {
-        val dish=favorites.get(position)
+        val favorite=favorites.get(position)
         val t = holder.design
 
-        t.foodName.text = dish.name
-        t.priceTv.text = "${dish.price} ₺"
-        showImg(dish.image, t.foodImg)
+        t.foodName.text = favorite.name
+        t.priceTv.text = "${favorite.price} ₺"
+        showImg(favorite.image, t.foodImg)
 
 
         t.cardViewRow.setOnClickListener {
             val dish= Dish(
-                id = dish.id,
-                name = dish.name,
-                image = dish.image,
-                price = dish.price.toString()
+                id = favorite.id,
+                name = favorite.name,
+                image = favorite.image,
+                price = favorite.price.toString()
             )
             val pass= FavoritesFragmentDirections.actionFavoritesFragmentToDetailFragment(dish = dish)
             Navigation.pass(it, pass)
@@ -62,10 +60,15 @@ class FavoriteAdapter (var mContext : Context, var favorites: List<Favorites>, v
         t.deleteIv.setupFavoriteToggle(
             initialState = true,
             onAdd = {
-                addFavorite(it = View(mContext), dish.id)
+               viewModel.addToFavorites(dish= Dish(
+                    id = favorite.id,
+                    name = favorite.name,
+                    image = favorite.image,
+                    price = favorite.price.toString()
+                ))
             },
             onRemove = {
-                removeFavorite(it= View(mContext), dish.id)
+                viewModel.delete(dishName = favorite.name)
             }
         )
     }
