@@ -82,7 +82,7 @@ class CartAdapter (val mContext: Context, val dishList:List<Dish>,val mode: Stri
                 max = 20
             ) { newValue ->
 
-                t.priceTv.text = "${newValue * dish.price} ₺"
+                t.priceTv.text = "${newValue * (dish.price.toInt())} ₺"
                t.pieceOfFood.text = newValue.toString()
             }
 

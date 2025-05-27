@@ -41,7 +41,7 @@ class DetailFragment : Fragment() {
         val bundle: DetailFragmentArgs by navArgs()
         val dish=bundle.dish
 
-        binding.priceTxt.text=dish.price.toString()
+        binding.priceTxt.text=dish.price
         binding.foodNameTxt.text=dish.name
         binding.totalPriceTxt.text=dish.price.toString()
         showImg("ssss", binding.foodIv)
@@ -60,7 +60,7 @@ class DetailFragment : Fragment() {
             max = 20
         ) { newValue ->
 
-            binding.totalPriceTxt.text = "${newValue * dish.price} ₺"
+            binding.totalPriceTxt.text = "${newValue * (dish.price.toInt())} ₺"
             binding.countTxt.text = newValue.toString()
         }
 
