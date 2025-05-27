@@ -60,7 +60,7 @@ class DishAdapter(var mContext: Context, var dishList: List<Dish>,var viewModel:
         }
 
         t.constAddShopIcn.setOnClickListener {
-            viewModel.addToCart(dish,1)
+            viewModel.addToCart(dish.name,dish.image,dish.price.toInt(),1)
         }
     }
 
