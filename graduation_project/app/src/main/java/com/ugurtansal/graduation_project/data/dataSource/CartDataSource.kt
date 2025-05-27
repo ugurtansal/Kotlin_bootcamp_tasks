@@ -24,9 +24,8 @@ class CartDataSource (var cartDao: CartDao){
         val crudResponse = cartDao.removeFromCart(cartDishId, userName)
     }
 
-    suspend fun updateCartItemQuantity(dishId: Int, quantity: Int) {
-        // Simulate network call to update the quantity of a dish in the cart
-    }
+
+
 
 
 }

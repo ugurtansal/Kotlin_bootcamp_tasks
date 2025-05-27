@@ -1,5 +1,6 @@
 package com.ugurtansal.graduation_project.ui.viewModel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.ugurtansal.graduation_project.data.entity.Dish
 import com.ugurtansal.graduation_project.data.repo.CartRepository
@@ -26,7 +27,26 @@ class DetailViewModel @Inject constructor(var cartRepository: CartRepository) : 
 
     fun addToCart(foodName: String, foodImage: String, foodPrice: Int, orderCount: Int) {
         CoroutineScope(Dispatchers.Main).launch {
-            cartRepository.addToCart(foodName, foodImage, foodPrice, orderCount)
+            try {
+                val currentCart = cartRepository.loadCartItems()
+
+                val existingDish = currentCart.firstOrNull { it.dishName == foodName }
+
+                if (existingDish != null) {
+                    val updatedCount = existingDish.dishQuantity.toInt() + orderCount
+                    cartRepository.updateCartItemQuantity(
+                        existingDish.cartDishId,
+                        foodName,
+                        foodImage,
+                        foodPrice,
+                        updatedCount
+                    )
+                } else {
+                    cartRepository.addToCart(foodName, foodImage, foodPrice, orderCount)
+                }
+            } catch (e: Exception) {
+                Log.e("DetailViewModel", "Error adding to cart: ${e.message}")
+            }
         }
     }
 }

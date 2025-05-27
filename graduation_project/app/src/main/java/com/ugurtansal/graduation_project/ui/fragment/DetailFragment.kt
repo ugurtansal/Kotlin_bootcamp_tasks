@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ugurtansal.graduation_project.R
@@ -27,7 +28,8 @@ class DetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val tempViewModel: DetailViewModel by viewModels()
+        viewModel = tempViewModel
     }
 
     override fun onCreateView(
@@ -75,7 +77,9 @@ class DetailFragment : Fragment() {
         )
 
         binding.btnAddCart.setOnClickListener {
-            addToCart(it,dish.id) //extension function
+           viewModel.addToCart(dish.name,dish.image,dish.price.toInt(),binding.countTxt.text.toString().toInt())
+//            view?.let { addToCart(it, dish.id) }
+//            findNavController().popBackStack()
         }
 
         binding.btnBack.setOnClickListener {
@@ -85,6 +89,9 @@ class DetailFragment : Fragment() {
 
         return binding.root
     }
+
+
+
 
 
 }

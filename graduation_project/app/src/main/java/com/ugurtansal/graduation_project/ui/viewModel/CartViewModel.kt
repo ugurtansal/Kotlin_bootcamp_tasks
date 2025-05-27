@@ -1,6 +1,7 @@
 package com.ugurtansal.graduation_project.ui.viewModel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ugurtansal.graduation_project.data.entity.Cart
@@ -14,7 +15,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CartViewModel @Inject constructor(var cartRepository: CartRepository) : ViewModel() {
-    var cartList= MutableLiveData<List<Cart>>()
+
+    private val _cartList = MutableLiveData<List<Cart>>()
+    val cartList: LiveData<List<Cart>> get() = _cartList
+
+
 
     init {
         loadCartItems()
@@ -25,7 +30,7 @@ class CartViewModel @Inject constructor(var cartRepository: CartRepository) : Vi
 
         CoroutineScope(Dispatchers.Main).launch {
             try {
-                cartList.value = cartRepository.loadCartItems()
+                _cartList.value = cartRepository.loadCartItems()
                 for (cart in cartList.value!!) {
                     Log.e("CartViewModel", "Dish ID: ${cart.cartDishId}, Dish Name: ${cart.dishName}")
                 }
@@ -48,7 +53,15 @@ class CartViewModel @Inject constructor(var cartRepository: CartRepository) : Vi
         }
     }
 
-    fun updateCartItemQuantity(dish: Dish, quantity: Int) {
-        // Logic to update the quantity of a dish in the cart
+    fun updateCartItemQuantity(cartDish: Cart, quantity: Int) {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                cartRepository.updateCartItemQuantity(cartDish.cartDishId, cartDish.dishName, cartDish.dishImage, cartDish.dishPrice.toInt(), quantity)
+                loadCartItems() // Refresh the cart items after updating
+            } catch (e: Exception) {
+                Log.e("CartViewModel", "Error updating cart item quantity: ${e.message}")
+                e.printStackTrace()
+            }
+        }
     }
 }

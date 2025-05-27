@@ -36,7 +36,7 @@ class CartFragment : Fragment() {
         binding=FragmentCartBinding.inflate(inflater,container,false)
 
         viewModel.cartList.observe(viewLifecycleOwner) {
-            val adapter = CartAdapter(requireContext(), it, "CartFragment")
+            val adapter = CartAdapter(requireContext(), it, "CartFragment",  onRemoveFromCart = { id -> viewModel.removeFromCart(id) })
             binding.cartRv.adapter = adapter
 
             binding.cartRv.layoutManager = LinearLayoutManager(requireContext())

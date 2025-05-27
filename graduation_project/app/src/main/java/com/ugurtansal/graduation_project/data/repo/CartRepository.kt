@@ -20,8 +20,10 @@ class CartRepository(var cartDataSource: CartDataSource) {
     }
 
 
-    suspend fun updateCartItemQuantity(dishId: Int, quantity: Int) {
-        cartDataSource.updateCartItemQuantity(dishId, quantity)
+    suspend fun updateCartItemQuantity(cartDishId: Int,foodName: String, foodImage: String, foodPrice: Int, quantity: Int) {
+        cartDataSource.removeFromCart(cartDishId);
+        cartDataSource.addToCart(foodName, foodImage, foodPrice, quantity)
+
     }
 
 
